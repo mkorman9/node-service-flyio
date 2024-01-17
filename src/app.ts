@@ -7,17 +7,17 @@ const app = createApp({
   trustProxies: config.HTTP_TRUST_PROXIES
 });
 
+app.get('/', async (req: Request, res: Response) => {
+  res.json({
+    data: randomPayload(16)
+  });
+});
+
 function randomPayload(n: number) {
   const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
   return [...Array(n)]
     .map(() => chars[Math.floor(Math.random() * chars.length)])
     .join('');
 }
-
-app.get('/', async (req: Request, res: Response) => {
-  res.json({
-    data: randomPayload(16)
-  });
-});
 
 export default appendErrorHandlers(app);
