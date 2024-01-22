@@ -1,4 +1,4 @@
-import {createApp, appendErrorHandlers} from './http/app_template';
+import {createApp, attachDefaultHandlers} from './http/app_template';
 import {Request, Response} from 'express';
 import config from './config';
 
@@ -20,4 +20,4 @@ function randomPayload(n: number) {
     .join('');
 }
 
-export default appendErrorHandlers(app);
+export default attachDefaultHandlers(app);
