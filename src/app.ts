@@ -1,5 +1,4 @@
-import {createApp, attachDefaultHandlers} from './http/app_template';
-import {Request, Response} from 'express';
+import {attachDefaultHandlers, createApp} from './http/app_template';
 import config from './config';
 
 const app = createApp({
@@ -7,7 +6,7 @@ const app = createApp({
   trustProxies: config.HTTP_TRUST_PROXIES
 });
 
-app.get('/', async (req: Request, res: Response) => {
+app.get('/', async (req, res) => {
   res.json({
     data: randomPayload(16)
   });
